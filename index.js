@@ -1,20 +1,74 @@
 (function () {
-    const CODE = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a','Enter'];
-    const LABELS = ['↑','↑','↓','↓','←','→','←','→','B','A','↵'];
-    const FACES = [':3','owo','uwu','qwq','>:3',':>',':)',':D','>w<','>.<','o.o','^-^','=^.^=','(=^･ω･^=)','(*^ω^*)','(✿◠‿◠)','rawr','mrrp','mrow',':3c'];
-    const COLORS = ['#cba6f7','#89dceb','#f38ba8','#a6e3a1','#fab387','#f9e2af'];
+    const CODE = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
+    const LABELS = ["↑", "↑", "↓", "↓", "←", "→", "←", "→", "B", "A", "↵"];
+    const FACES = [
+        "owo",
+        "uwu",
+        "qwq",
+        ":3",
+        ":3c",
+        ">:3",
+        ":>",
+        ":<",
+        ":)",
+        ":(",
+        ":D",
+        "D:",
+        ">w<",
+        ">.<",
+        ">~<",
+        ">///<",
+        "^-^",
+        "^^",
+        "^_^",
+        "=^.^=",
+        "(=^･ω･^=)",
+        "(*^ω^*)",
+        "o.o",
+        "rawr",
+        "mrrp",
+        "mrow",
+        "meow",
+        "nyaa",
+        "arf",
+        "bark",
+        "grr",
+        "haiii",
+        "hewwo",
+        "hiii",
+        "oo ee oo",
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "^^dd><><bae",
+        "project sekai",
+        "akiyama mizuki",
+        "mizuena",
+        "emunene",
+        "yuri",
+        "hatsune miku",
+        "kasane teto",
+        "🥺",
+        "😖",
+        "❤️",
+        "❤️‍🩹",
+        "🩷",
+        "💜",
+        "🏳️‍⚧️",
+        "🏳️‍🌈"
+
+    ];
+    const COLORS = ["#cba6f7", "#89dceb", "#f38ba8", "#a6e3a1", "#fab387", "#f9e2af"];
     let idx = 0;
     let active = false;
 
-    const indicator = document.createElement('div');
+    const indicator = document.createElement("div");
     indicator.style.cssText = `
         position: fixed; bottom: 1ch; right: 1.5ch;
-        font-family: 'IBM Plex Mono', monospace;
+        font-family: "IBM Plex Mono", monospace;
         font-size: 0.7em; pointer-events: none; z-index: 9999;
         display: flex; gap: 0.4ch;
     `;
     const keyEls = LABELS.map(label => {
-        const span = document.createElement('span');
+        const span = document.createElement("span");
         span.textContent = label;
         span.style.cssText = `color: #313244; transition: color 0.15s;`;
         indicator.appendChild(span);
@@ -26,17 +80,17 @@
 
     function updateIndicator() {
         keyEls.forEach((el, i) => {
-            el.style.color = i < idx ? '#cba6f7' : '#313244';
+            el.style.color = i < idx ? "#cba6f7" : "#313244";
         });
 
         clearTimeout(hideTimer);
 
         if (idx === 0) hideTimer = setTimeout(() => {
-            keyEls.forEach(el => el.style.color = '#313244');
+            keyEls.forEach(el => el.style.color = "#313244");
         }, 1000);
     }
 
-    document.addEventListener('keydown', e => {
+    document.addEventListener("keydown", e => {
         if (e.key === CODE[idx]) {
             idx++;
             updateIndicator();
@@ -55,6 +109,8 @@
     function burst() {
         if (active) return;
         active = true;
+
+        window.dispatchEvent(new CustomEvent("konami"));
 
         setInterval(() => {
             const count = 14 + Math.floor(Math.random() * 10);
@@ -75,7 +131,7 @@
     }
 
     function spawn() {
-        const el = document.createElement('div');
+        const el = document.createElement("div");
         el.textContent = FACES[Math.floor(Math.random() * FACES.length)];
         const { x, y } = randPos();
         el.style.cssText = `
@@ -90,41 +146,83 @@
             z-index: 9999;
             white-space: nowrap;
             transition: opacity ${0.8 + Math.random() * 0.8}s ease;
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: "IBM Plex Mono", monospace;
         `;
         document.body.appendChild(el);
 
         requestAnimationFrame(() => requestAnimationFrame(() => {
-            el.style.opacity = '0';
+            el.style.opacity = "0";
         }));
 
         setTimeout(() => el.remove(), 2000);
     }
 })();
 
-const params = new URLSearchParams(location.search);
-const artParam = params.get('a');
+document.addEventListener("DOMContentLoaded", function () {
+    const CATPPUCCIN = [
+        "#cba6f7",
+        "#f38ba8",
+        "#fab387",
+        "#f9e2af",
+        "#a6e3a1",
+        "#94e2d5",
+        "#89dceb",
+        "#89b4fa",
+        "#b4befe",
+        "#f5c2e7"
+    ];
 
-fetch('ascii/manifest.json')
+    const title = document.querySelector(".title");
+    if (!title) return;
+
+    const chars = title.textContent.split("");
+    title.textContent = "";
+
+    const spans = chars.map(ch => {
+        const span = document.createElement("span");
+        span.textContent = ch;
+        span.style.transition = "color 0.6s ease";
+        title.appendChild(span);
+        return span;
+    });
+
+    function randomColor() {
+        return CATPPUCCIN[Math.floor(Math.random() * CATPPUCCIN.length)];
+    }
+
+    function recolor() {
+        spans.forEach(span => {
+            span.style.color = randomColor();
+        });
+    }
+
+    recolor();
+    setInterval(recolor, 800);
+});
+
+const params = new URLSearchParams(location.search);
+const artParam = params.get("a");
+
+fetch("ascii/manifest.json")
     .then(r => r.json())
     .then(files => {
         let file;
 
         if (artParam) {
-            const match = files.find(f => f.replace(/\.txt$/, '') === artParam);
+            const match = files.find(f => f.replace(/\.txt$/, "") === artParam);
             file = match || files[Math.floor(Math.random() * files.length)];
         } else {
             file = files[Math.floor(Math.random() * files.length)];
         }
 
-        return fetch('ascii/' + file);
+        return fetch("ascii/" + file);
     })
     .then(r => r.text())
     .then(text => {
-        const pre = document.getElementById('art');
+        const pre = document.getElementById("art");
         pre.textContent = text;
 
-        const lines = text.split('\n');
+        const lines = text.split("\n");
         const numLines = lines.length;
         const maxCols = Math.max(...lines.map(l => l.length));
 
@@ -135,5 +233,27 @@ fetch('ascii/manifest.json')
         const sizeByW = maxW / (maxCols * 0.6);
         const fontSize = Math.min(sizeByH, sizeByW, 10);
 
-        pre.style.fontSize = fontSize + 'px';
+        pre.style.fontSize = fontSize + "px";
     });
+
+window.addEventListener("konami", function () {
+    const style = document.createElement("style");
+    style.textContent = `
+        @keyframes rainbow-flow {
+            0%   { background-position: 0% 0%; }
+            100% { background-position: 50% 50%; }
+        }
+        #art {
+            background: linear-gradient(135deg,
+                #ff0000, #ff6600, #ffcc00, #00dd00, #0099ff, #7700ff, #ff00cc,
+                #ff0000, #ff6600, #ffcc00, #00dd00, #0099ff, #7700ff, #ff00cc
+            );
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            animation: rainbow-flow 6s linear infinite;
+        }
+    `;
+    document.head.appendChild(style);
+});
