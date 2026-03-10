@@ -1,0 +1,139 @@
+(function () {
+    const CODE = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a','Enter'];
+    const LABELS = ['↑','↑','↓','↓','←','→','←','→','B','A','↵'];
+    const FACES = [':3','owo','uwu','qwq','>:3',':>',':)',':D','>w<','>.<','o.o','^-^','=^.^=','(=^･ω･^=)','(*^ω^*)','(✿◠‿◠)','rawr','mrrp','mrow',':3c'];
+    const COLORS = ['#cba6f7','#89dceb','#f38ba8','#a6e3a1','#fab387','#f9e2af'];
+    let idx = 0;
+    let active = false;
+
+    const indicator = document.createElement('div');
+    indicator.style.cssText = `
+        position: fixed; bottom: 1ch; right: 1.5ch;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.7em; pointer-events: none; z-index: 9999;
+        display: flex; gap: 0.4ch;
+    `;
+    const keyEls = LABELS.map(label => {
+        const span = document.createElement('span');
+        span.textContent = label;
+        span.style.cssText = `color: #313244; transition: color 0.15s;`;
+        indicator.appendChild(span);
+        return span;
+    });
+    document.body.appendChild(indicator);
+
+    let hideTimer;
+
+    function updateIndicator() {
+        keyEls.forEach((el, i) => {
+            el.style.color = i < idx ? '#cba6f7' : '#313244';
+        });
+
+        clearTimeout(hideTimer);
+
+        if (idx === 0) hideTimer = setTimeout(() => {
+            keyEls.forEach(el => el.style.color = '#313244');
+        }, 1000);
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === CODE[idx]) {
+            idx++;
+            updateIndicator();
+
+            if (idx === CODE.length) {
+                idx = 0;
+                setTimeout(updateIndicator, 200);
+                burst();
+            }
+        } else {
+            idx = e.key === CODE[0] ? 1 : 0;
+            updateIndicator();
+        }
+    });
+
+    function burst() {
+        if (active) return;
+        active = true;
+
+        setInterval(() => {
+            const count = 14 + Math.floor(Math.random() * 10);
+            for (let i = 0; i < count; i++) spawn();
+        }, 350);
+    }
+
+    function randPos() {
+        const centered = Math.random() < 0.5;
+
+        if (centered) {
+            const x = (Math.random() + Math.random()) / 2;
+            const y = (Math.random() + Math.random()) / 2;
+            return { x: 20 + x * 60, y: 20 + y * 60 };
+        }
+
+        return { x: Math.random() * 100, y: Math.random() * 100 };
+    }
+
+    function spawn() {
+        const el = document.createElement('div');
+        el.textContent = FACES[Math.floor(Math.random() * FACES.length)];
+        const { x, y } = randPos();
+        el.style.cssText = `
+            position: fixed;
+            left: ${x}vw;
+            top: ${y}vh;
+            font-size: ${0.8 + Math.random() * 2.4}em;
+            color: ${COLORS[Math.floor(Math.random() * COLORS.length)]};
+            opacity: ${0.3 + Math.random() * 0.7};
+            transform: rotate(${-40 + Math.random() * 80}deg);
+            pointer-events: none;
+            z-index: 9999;
+            white-space: nowrap;
+            transition: opacity ${0.8 + Math.random() * 0.8}s ease;
+            font-family: 'IBM Plex Mono', monospace;
+        `;
+        document.body.appendChild(el);
+
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            el.style.opacity = '0';
+        }));
+
+        setTimeout(() => el.remove(), 2000);
+    }
+})();
+
+const params = new URLSearchParams(location.search);
+const artParam = params.get('a');
+
+fetch('ascii/manifest.json')
+    .then(r => r.json())
+    .then(files => {
+        let file;
+
+        if (artParam) {
+            const match = files.find(f => f.replace(/\.txt$/, '') === artParam);
+            file = match || files[Math.floor(Math.random() * files.length)];
+        } else {
+            file = files[Math.floor(Math.random() * files.length)];
+        }
+
+        return fetch('ascii/' + file);
+    })
+    .then(r => r.text())
+    .then(text => {
+        const pre = document.getElementById('art');
+        pre.textContent = text;
+
+        const lines = text.split('\n');
+        const numLines = lines.length;
+        const maxCols = Math.max(...lines.map(l => l.length));
+
+        const maxH = window.innerHeight * 0.3;
+        const maxW = pre.parentElement.clientWidth;
+
+        const sizeByH = maxH / (numLines * 1.2);
+        const sizeByW = maxW / (maxCols * 0.6);
+        const fontSize = Math.min(sizeByH, sizeByW, 10);
+
+        pre.style.fontSize = fontSize + 'px';
+    });
