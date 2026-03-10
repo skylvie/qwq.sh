@@ -24,7 +24,7 @@ qwq.sh {
     }
 
     handle {
-        error 404
+        file_server
     }
 
     handle_errors {
