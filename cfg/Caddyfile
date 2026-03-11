@@ -17,6 +17,11 @@ qwq.sh {
         file_server
     }
 
+    # FxEmbed
+    handle /x/* {
+        redir https://x.qwq.sh{path.after("/x")} permanent
+    }
+
     # Shell scripts
     handle /*.sh {
         rewrite * /sh{uri}
