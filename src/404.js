@@ -1,7 +1,7 @@
 const params = new URLSearchParams(location.search);
 const artParam = params.get("a");
 
-fetch("ascii/manifest_big.json")
+fetch("ascii/big/manifest.json")
     .then(r => r.json())
     .then(files => {
         let file;
@@ -13,7 +13,7 @@ fetch("ascii/manifest_big.json")
             file = files[Math.floor(Math.random() * files.length)];
         }
 
-        return fetch("ascii/" + file);
+        return fetch("ascii/big/" + file);
     })
     .then(r => r.text())
     .then(text => {
