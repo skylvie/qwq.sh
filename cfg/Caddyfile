@@ -1,6 +1,7 @@
 qwq.sh {
     import common-settings
     import log qwq
+    import cf-tls
 
     root * /srv/qwq.sh
 
