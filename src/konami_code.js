@@ -2,58 +2,15 @@
     const CODE = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a", "Enter"];
     const LABELS = ["↑", "↑", "↓", "↓", "←", "→", "←", "→", "B", "A", "↵"];
     const FACES = [
-        "owo",
-        "uwu",
-        "qwq",
-        ":3",
-        ":3c",
-        ">:3",
-        ":>",
-        ":<",
-        ":)",
-        ":(",
-        ":D",
-        "D:",
-        ">w<",
-        ">.<",
-        ">~<",
-        ">///<",
-        "^-^",
-        "^^",
-        "^_^",
-        "=^.^=",
-        "(=^･ω･^=)",
-        "(*^ω^*)",
-        "o.o",
-        "rawr",
-        "mrrp",
-        "mrow",
-        "meow",
-        "nyaa",
-        "arf",
-        "bark",
-        "grr",
-        "haiii",
-        "hewwo",
-        "hiii",
-        "oo ee oo",
-        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-        "^^dd><><bae",
-        "project sekai",
-        "akiyama mizuki",
-        "mizuena",
-        "emunene",
-        "yuri",
-        "hatsune miku",
-        "kasane teto",
-        "🥺",
-        "😖",
-        "❤️",
-        "❤️‍🩹",
-        "🩷",
-        "💜",
-        "🏳️‍⚧️",
-        "🏳️‍🌈"
+        "owo", "uwu", "qwq", "o.o",
+        ":3", ":3c", ">:3",
+        ">w<", ">.<", ">~<", ">///<",
+        "^-^", "^_^",  "=^.^=", "(=^･ω･^=)", "(*^ω^*)",
+        // "rawr", "mrrp", "mrow", "meow", "nyaa", "arf",
+        // "haiii", "hewwo", "hiii",
+        // "mizuki", "mizuena", "emunene", "yuri",
+        // "gumi", "miku", "teto",
+        "🩷", "💜", "🏳️‍⚧️", "🏳️‍🌈"
 
     ];
     const COLORS = ["#cba6f7", "#89dceb", "#f38ba8", "#a6e3a1", "#fab387", "#f9e2af"];
@@ -64,8 +21,8 @@
     indicator.style.cssText = `
         position: fixed; bottom: 1ch; right: 1.5ch;
         font-family: "IBM Plex Mono", monospace;
-        font-size: 0.7em; pointer-events: none; z-index: 9999;
-        display: flex; gap: 0.4ch;
+        font-size: 0.7em; pointer-events: auto; z-index: 9999;
+        display: flex; gap: 0.4ch; cursor: pointer; user-select: none;
     `;
     const keyEls = LABELS.map(label => {
         const span = document.createElement("span");
@@ -89,6 +46,17 @@
             keyEls.forEach(el => el.style.color = "#313244");
         }, 1000);
     }
+
+    indicator.addEventListener("click", () => {
+        idx++;
+        updateIndicator();
+
+        if (idx === CODE.length) {
+            idx = 0;
+            setTimeout(updateIndicator, 200);
+            burst();
+        }
+    });
 
     document.addEventListener("keydown", e => {
         if (e.key === CODE[idx]) {
@@ -200,59 +168,24 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(recolor, 800);
 });
 
-const params = new URLSearchParams(location.search);
-const artParam = params.get("a");
-
-fetch("ascii/small/manifest.json")
-    .then(r => r.json())
-    .then(files => {
-        let file;
-
-        if (artParam) {
-            const match = files.find(f => f.replace(/\.txt$/, "") === artParam);
-            file = match || files[Math.floor(Math.random() * files.length)];
-        } else {
-            file = files[Math.floor(Math.random() * files.length)];
-        }
-
-        return fetch("ascii/small/" + file);
-    })
-    .then(r => r.text())
-    .then(text => {
-        const pre = document.getElementById("art");
-        pre.textContent = text;
-
-        const lines = text.split("\n");
-        const numLines = lines.length;
-        const maxCols = Math.max(...lines.map(l => l.length));
-
-        const maxH = window.innerHeight * 0.3;
-        const maxW = pre.parentElement.clientWidth;
-
-        const sizeByH = maxH / (numLines * 1.2);
-        const sizeByW = maxW / (maxCols * 0.6);
-        const fontSize = Math.min(sizeByH, sizeByW, 10);
-
-        pre.style.fontSize = fontSize + "px";
-    });
-
 window.addEventListener("konami", function () {
     const style = document.createElement("style");
     style.textContent = `
         @keyframes rainbow-flow {
-            0%   { background-position: 0% 0%; }
-            100% { background-position: 50% 50%; }
+            from { background-position: 0% 50%; }
+            to   { background-position: 100% 50%; }
         }
         #art {
-            background: linear-gradient(135deg,
+            background: linear-gradient(90deg,
                 #ff0000, #ff6600, #ffcc00, #00dd00, #0099ff, #7700ff, #ff00cc,
-                #ff0000, #ff6600, #ffcc00, #00dd00, #0099ff, #7700ff, #ff00cc
+                #ff0000, #ff6600, #ffcc00, #00dd00, #0099ff, #7700ff, #ff00cc,
+                #ff0000
             );
-            background-size: 400% 400%;
+            background-size: 200% 100%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent !important;
-            animation: rainbow-flow 6s linear infinite;
+            animation: rainbow-flow 4s linear infinite;
         }
     `;
     document.head.appendChild(style);

@@ -7,4 +7,5 @@ src/ - assets
 sh/ - shell scripts
 cfg/ - config file(s)
 ascii/ - ASCII art
+88x31/ - 88x31 buttons
 ```
