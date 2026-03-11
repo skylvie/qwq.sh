@@ -17,6 +17,12 @@ qwq.sh {
         file_server
     }
 
+    # /contact
+    handle /contact {
+        rewrite * /contact.html
+        file_server
+    }
+
     # Shell scripts
     handle /*.sh {
         rewrite * /sh{uri}
