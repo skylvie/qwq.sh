@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const params = new URLSearchParams(location.search);
 const artParam = params.get("a");
 
-fetch("ascii/manifest.json")
+fetch("ascii/manifest_small.json")
     .then(r => r.json())
     .then(files => {
         let file;

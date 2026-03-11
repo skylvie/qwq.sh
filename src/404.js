@@ -1,8 +1,19 @@
-fetch("/ascii/manifest.json")
+const params = new URLSearchParams(location.search);
+const artParam = params.get("a");
+
+fetch("ascii/manifest_big.json")
     .then(r => r.json())
     .then(files => {
-        const file = files[Math.floor(Math.random() * files.length)];
-        return fetch("/ascii/" + file);
+        let file;
+
+        if (artParam) {
+            const match = files.find(f => f.replace(/\.txt$/, "") === artParam);
+            file = match || files[Math.floor(Math.random() * files.length)];
+        } else {
+            file = files[Math.floor(Math.random() * files.length)];
+        }
+
+        return fetch("ascii/" + file);
     })
     .then(r => r.text())
     .then(text => {
