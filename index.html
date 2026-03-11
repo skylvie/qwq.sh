@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/style.css">
 
     <link rel="shortcut icon" href="/favicon.png" type="image/png">
 </head>
@@ -25,6 +25,7 @@
 <body>
     <pre id="art"></pre>
 
+    <script src="/js/title_color.js"></script>
     <script src="/js/konami_code.js"></script>
     <script src="/js/ascii_small.js"></script>
     <script src="/js/88x31.js"></script>
@@ -56,10 +57,14 @@
 
     <footer>
         <div class="footer-links">
-            <div>run by <a href="https://skylvi.net" target="_blank" >skylvi.net</a></div>
-            <div>contact guide: <a href="/contact.html" target="_blank">/contact</a></div>
+            <div>
+                <a href="/contact.html" target="_blank">contact</a> |
+                <a href="/tos.html" target="_blank">terms of service</a> |
+                <a href="/pp.html" target="_blank">privacy policy</a> |
+                <a href="/dmca.html" target="_blank">DMCA</a>
+            </div>
+            <div id="buttons"></div>
         </div>
-        <div id="buttons"></div>
     </footer>
 </body>
 </html>

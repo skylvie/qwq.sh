@@ -5,31 +5,12 @@ qwq.sh {
 
     root * /srv/qwq.sh
 
-    # Main site
-    handle / {
-        rewrite * /index.html
-        file_server
-    }
-
-    # /dmca
-    handle /dmca {
-        rewrite * /dmca.html
-        file_server
-    }
-
-    # /contact
-    handle /contact {
-        rewrite * /contact.html
-        file_server
-    }
-
     # Shell scripts
     handle /*.sh {
         rewrite * /sh{uri}
         file_server
     }
 
-    # Static assets
     handle {
         file_server
     }
