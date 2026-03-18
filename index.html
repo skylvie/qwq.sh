@@ -4,90 +4,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>qwq.sh</title>
+    <title>qwq.sh - Free Public Privacy-Focused Services | SearXNG, PrivateBin, Arch Mirror & More</title>
 
     <meta name="theme-color" content="#f38ba8">
-    <meta name="description" content="meow :3">
-    <meta property="og:title" content="qwq.sh">
-    <meta property="og:description" content="meow :3">
-    <meta property="og:url" content="https://qwq.sh">
+    <meta name="description" content="Free, privacy-respecting public services: SearXNG private search engine, PrivateBin encrypted pastebin, Arch Linux mirror, Kutt URL shortener, and more. No tracking, no analytics, fully self-hosted and open source.">
+    <meta name="keywords" content="free public services, self-hosted services, privacy focused services, SearXNG instance, PrivateBin instance, Arch Linux mirror, URL shortener, open source services, no tracking, privacy respecting, free search engine, encrypted pastebin, self hosted alternatives">
+    <link rel="canonical" href="https://qwq.sh/">
+
+    <meta property="og:title" content="qwq.sh - Free Public Privacy-Focused Services">
+    <meta property="og:description" content="Free, self-hosted public services with zero tracking. SearXNG search, PrivateBin, Arch Linux mirror, URL shortener, and more.">
+    <meta property="og:url" content="https://qwq.sh/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://qwq.sh/favicon.png">
+    <meta property="og:site_name" content="qwq.sh">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="qwq.sh - Free Public Privacy-Focused Services">
+    <meta name="twitter:description" content="Free, self-hosted public services with zero tracking. SearXNG search, PrivateBin, Arch Linux mirror, URL shortener, and more.">
+    <meta name="twitter:image" content="https://qwq.sh/favicon.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "qwq.sh",
+        "url": "https://qwq.sh",
+        "description": "Free, privacy-respecting public services including SearXNG private search, PrivateBin encrypted pastebin, Arch Linux mirror, and Kutt URL shortener. No tracking, no analytics, fully self-hosted.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://sxng.qwq.sh/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "qwq.sh",
+        "url": "https://qwq.sh",
+        "logo": "https://qwq.sh/favicon.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "webmaster@qwq.sh",
+            "contactType": "customer support"
+        },
+        "sameAs": [
+            "https://discord.gg/bfZNJ9D56k"
+        ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 
-    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
-    <pre id="art"></pre>
+    <pre id="art" aria-hidden="true"></pre>
 
     <script src="/js/title_color.js"></script>
     <script src="/js/konami_code.js"></script>
     <script src="/js/ascii_small.js"></script>
     <script src="/js/88x31.js"></script>
 
-    <div class="title">qwq.sh</div>
-    <div class="subtitle">meow :3 |
-        <a href="https://status.qwq.sh/status/qwq" target="_blank">uptime</a> |
-        <a href="https://qwq.atabook.org/" target="_blank">guestbook</a> |
-        <a href="https://discord.gg/bfZNJ9D56k" target="_blank">discord</a>
-    </div>
+    <header>
+        <h1 class="title">qwq.sh</h1>
+        <p class="subtitle">services for everyone</p>
+    </header>
 
     <hr>
 
-    <section>
-        <div class="section-label">services :</div>
-        <ul>
-            <li>
-                <a href="https://arch.qwq.sh" target="_blank">arch.qwq.sh</a>
-                <span class="desc">-
-                    <a href="https://archlinux.org/" target="_blank">Arch Linux</a>
-                    Mirror
-                </span>
-            </li>
-            <li>
-                <a href="https://sxng.qwq.sh" target="_blank">sxng.qwq.sh</a>
-                <span class="desc">- Search Engine
-                    <a href="https://github.com/searxng/searxng" target="_blank">(SearXNG)</a>
-                </span>
-            </li>
-            <li>
-                <a href="https://bin.qwq.sh" target="_blank">bin.qwq.sh</a>
-                <span class="desc">- Pastebin
-                    <a href="https://github.com/PrivateBin/PrivateBin" target="_blank">(PrivateBin)</a>
-                </span>
-            </li>
-            <li>
-                <a href="https://l.qwq.sh" target="_blank">l.qwq.sh</a>
-                <span class="desc">- URL Shortener
-                    <a href="https://github.com/thedevs-network/kutt" target="_blank">(Kutt)</a>
-                </span>
-            </li>
-            <li>
-                <a href="https://x.qwq.sh" target="_blank">x.qwq.sh</a>
-                <span class="desc">-
-                    <a href="https://github.com/FxEmbed/FxEmbed" target="_blank">FxEmbed</a>
-                </span>
-            </li>
-        </ul>
-    </section>
+    <main>
+        <section>
+            <h2 class="section-label">services :</h2>
+            <ul>
+                <li>
+                    <a href="https://arch.qwq.sh" target="_blank" rel="noopener">arch.qwq.sh</a>
+                    <span class="desc">-
+                        <a href="https://archlinux.org/" target="_blank" rel="noopener">Arch Linux</a>
+                        Mirror
+                    </span>
+                </li>
+                <li>
+                    <a href="https://sxng.qwq.sh" target="_blank" rel="noopener">sxng.qwq.sh</a>
+                    <span class="desc">- Private Search Engine
+                        <a href="https://github.com/searxng/searxng" target="_blank" rel="noopener">(SearXNG)</a>
+                    </span>
+                </li>
+                <li>
+                    <a href="https://bin.qwq.sh" target="_blank" rel="noopener">bin.qwq.sh</a>
+                    <span class="desc">- Encrypted Pastebin
+                        <a href="https://github.com/PrivateBin/PrivateBin" target="_blank" rel="noopener">(PrivateBin)</a>
+                    </span>
+                </li>
+                <li>
+                    <a href="https://l.qwq.sh" target="_blank" rel="noopener">l.qwq.sh</a>
+                    <span class="desc">- URL Shortener
+                        <a href="https://github.com/thedevs-network/kutt" target="_blank" rel="noopener">(Kutt)</a>
+                    </span>
+                </li>
+                <li>
+                    <a href="https://x.qwq.sh" target="_blank" rel="noopener">x.qwq.sh</a>
+                    <span class="desc">- Media Embedding
+                        <a href="https://github.com/FxEmbed/FxEmbed" target="_blank" rel="noopener">(FxEmbed)</a>
+                    </span>
+                </li>
+            </ul>
+        </section>
+    </main>
 
     <hr>
 
     <footer>
-        <div class="footer-links">
+        <nav class="footer-links" aria-label="Legal and contact links">
             <div>
-                <a href="/contact.html" target="_blank">contact</a> |
-                <a href="/tos.html" target="_blank">terms of service</a> |
-                <a href="/pp.html" target="_blank">privacy policy</a> |
-                <a href="/dmca.html" target="_blank">DMCA</a>
+                <a href="https://status.qwq.sh/status/qwq" target="_blank" rel="noopener">uptime</a> |
+                <a href="https://qwq.atabook.org/" target="_blank" rel="noopener">guestbook</a> |
+                <a href="/contact.html">contact</a> |
+                <a href="/tos.html">terms of service</a> |
+                <a href="/pp.html">privacy policy</a> |
+                <a href="/dmca.html">dmca</a>
             </div>
             <div id="buttons"></div>
-        </div>
+        </nav>
     </footer>
 </body>
 

@@ -4,83 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | qwq.sh</title>
+    <title>Privacy Policy - qwq.sh | No Tracking, No Analytics</title>
+
+    <meta name="theme-color" content="#f38ba8">
+    <meta name="description" content="Privacy policy for qwq.sh services. We don't track you, use analytics, or sell your data. Minimal data collection with zero logging on most services.">
+    <link rel="canonical" href="https://qwq.sh/pp.html">
+
+    <meta property="og:title" content="Privacy Policy - qwq.sh">
+    <meta property="og:description" content="Privacy policy for qwq.sh services. No tracking, no analytics, no data selling. Minimal data collection with zero logging.">
+    <meta property="og:url" content="https://qwq.sh/pp.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://qwq.sh/favicon.png">
+    <meta property="og:site_name" content="qwq.sh">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
 
-    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png" type="image/png">
 </head>
 
 <body>
-    <pre id="art"></pre>
+    <pre id="art" aria-hidden="true"></pre>
     <script src="/js/title_color.js"></script>
     <script src="/js/ascii_small.js"></script>
 
-    <div class="title">Privacy | qwq.sh</div>
-    <div class="subtitle">Privacy Policy</div>
+    <header>
+        <h1 class="title">Privacy | qwq.sh</h1>
+        <p class="subtitle">Privacy Policy</p>
+    </header>
 
     <hr>
 
-    <section>
-        <div class="section-label">terms :</div>
-        <ul>
-            <li><b>"We/Us"</b> refers to qwq.sh administrator(s).</li>
-            <li><b>"Service/Services"</b> refers to any service provided by qwq.sh.</li>
-            <li><b>"User"</b> refers to any person accessing qwq.sh and its services.</li>
-        </ul>
-    </section>
+    <main>
+        <section>
+            <h2 class="section-label">terms :</h2>
+            <ul>
+                <li><b>"We/Us"</b> refers to qwq.sh administrator(s).</li>
+                <li><b>"Service/Services"</b> refers to any service provided by qwq.sh.</li>
+                <li><b>"User"</b> refers to any person accessing qwq.sh and its services.</li>
+            </ul>
+        </section>
 
-    <section>
-        <div class="section-label">overview :</div>
-        <p class="desc">We don't want your data and we collect as little as possible. This policy explains what we do and don't collect across our services.</p>
-    </section>
+        <section>
+            <h2 class="section-label">overview :</h2>
+            <p class="desc">We don't want your data and we collect as little as possible. This policy explains what we do and don't collect across our services.</p>
+        </section>
 
-    <section>
-        <div class="section-label">what we collect :</div>
-        <ul>
-            <li>We use <a href="https://www.cloudflare.com/" target="_blank">Cloudflare</a> for all of our services. Cloudflare's own <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">privacy policy</a> applies to all traffic passing through their network.</li>
-            <li>We maintain Caddy access logs for most services. These logs include your IP address, request path, timestamp, user agent, and other standard HTTP request data. These are used solely for abuse prevention and debugging.</li>
-        </ul>
-    </section>
+        <section>
+            <h2 class="section-label">what we collect :</h2>
+            <ul>
+                <li>We use <a href="https://www.cloudflare.com/" target="_blank" rel="noopener">Cloudflare</a> for all of our services. Cloudflare's own <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">privacy policy</a> applies to all traffic passing through their network.</li>
+                <li>We maintain Caddy access logs for most services. These logs include your IP address, request path, timestamp, user agent, and other standard HTTP request data. These are used solely for abuse prevention and debugging.</li>
+            </ul>
+        </section>
 
-    <section>
-        <div class="section-label">per-service details :</div>
-        <ul>
-            <li><b>qwq.sh</b> - This is a static website. No user data is processed beyond standard access logs.</li>
-            <li><b>SearXNG</b> - Zero logging. No search queries are recorded or stored. No one, including administrators, can see your searches.</li>
-            <li><b>PrivateBin</b> - All pastes are end-to-end encrypted. Administrators cannot view the contents of any paste.</li>
-            <li><b>Kutt</b> - No access logs are kept. The only data visible to administrators is the list of currently existing shortened URLs. No information about who created them is stored.</li>
-            <li><b>Arch Linux mirror</b> - No download history is logged. The only information visible to administrators is clients currently downloading files and their IP addresses during the active connection.</li>
-            <li><b>x.qwq.sh</b> - No logs of any kind are collected.</li>
-            <li><b>Uptime monitor</b> - Powered by <a href="https://github.com/louislam/uptime-kuma" target="_blank">Uptime Kuma</a>. No access logs are kept on the Uptime Kuma instance itself.</li>
-            <li><b>Guestbook</b> - The guestbook is an external service hosted by <a href="https://atabook.org/" target="_blank">Atabook</a> and is not operated by us. Their own privacy policy applies.</li>
-        </ul>
-    </section>
+        <section>
+            <h2 class="section-label">per-service details :</h2>
+            <ul>
+                <li><b>qwq.sh</b> - This is a static website. No user data is processed beyond standard access logs.</li>
+                <li><b>SearXNG</b> - Zero logging. No search queries are recorded or stored. No one, including administrators, can see your searches.</li>
+                <li><b>PrivateBin</b> - All pastes are end-to-end encrypted. Administrators cannot view the contents of any paste.</li>
+                <li><b>Kutt</b> - No access logs are kept. The only data visible to administrators is the list of currently existing shortened URLs. No information about who created them is stored.</li>
+                <li><b>Arch Linux mirror</b> - No download history is logged. The only information visible to administrators is clients currently downloading files and their IP addresses during the active connection.</li>
+                <li><b>x.qwq.sh</b> - No logs of any kind are collected.</li>
+                <li><b>Uptime monitor</b> - Powered by <a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener">Uptime Kuma</a>. No access logs are kept on the Uptime Kuma instance itself.</li>
+                <li><b>Guestbook</b> - The guestbook is an external service hosted by <a href="https://atabook.org/" target="_blank" rel="noopener">Atabook</a> and is not operated by us. Their own privacy policy applies.</li>
+            </ul>
+        </section>
 
-    <section>
-        <div class="section-label">what we don't do :</div>
-        <ul>
-            <li>We do not use analytics, tracking, or fingerprinting.</li>
-            <li>We do not sell, share, or provide data to any third parties.</li>
-        </ul>
-    </section>
+        <section>
+            <h2 class="section-label">what we don't do :</h2>
+            <ul>
+                <li>We do not use analytics, tracking, or fingerprinting.</li>
+                <li>We do not sell, share, or provide data to any third parties.</li>
+            </ul>
+        </section>
 
-    <section>
-        <div class="section-label">data requests :</div>
-        <p class="desc">You may request an export of any data we hold about you. Contact us and we will provide what we have, if anything.</p>
-    </section>
+        <section>
+            <h2 class="section-label">data requests :</h2>
+            <p class="desc">You may request an export of any data we hold about you. Contact us and we will provide what we have, if anything.</p>
+        </section>
 
-    <section>
-        <div class="section-label">contact :</div>
-        <ul>
-            <li>
-                <a href="mailto:webmaster@qwq.sh">webmaster@qwq.sh</a>
-                <span class="desc">- privacy questions or data requests</span>
-            </li>
-        </ul>
-    </section>
+        <section>
+            <h2 class="section-label">contact :</h2>
+            <ul>
+                <li>
+                    <a href="mailto:webmaster@qwq.sh">webmaster@qwq.sh</a>
+                    <span class="desc">- privacy questions or data requests</span>
+                </li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>

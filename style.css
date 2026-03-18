@@ -35,10 +35,11 @@ pre {
     line-height: 1.2;
 }
 
-.title {
+h1, .title {
     font-size: 2em;
     color: #cba6f7;
     margin-bottom: 0.25ch;
+    font-weight: 400;
 }
 
 .subtitle {
@@ -50,9 +51,11 @@ section {
     margin-bottom: 2ch;
 }
 
-.section-label {
+h2, .section-label {
     color: #f5c2e7;
     margin-bottom: 0.75ch;
+    font-size: 1em;
+    font-weight: 400;
 }
 
 ul {
