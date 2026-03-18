@@ -124,6 +124,7 @@ footer {
     }
 }
 
-    footer a {
-        color: #f9e2af;
-    }
+.subtitle a,
+footer a {
+    color: #f9e2af;
+}
