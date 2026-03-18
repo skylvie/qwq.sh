@@ -6,22 +6,22 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://qwq.sh/contact.html</loc>
+    <loc>https://qwq.sh/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://qwq.sh/tos.html</loc>
+    <loc>https://qwq.sh/tos</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://qwq.sh/pp.html</loc>
+    <loc>https://qwq.sh/pp</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://qwq.sh/dmca.html</loc>
+    <loc>https://qwq.sh/dmca</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

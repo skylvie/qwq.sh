@@ -1,9 +1,49 @@
 qwq.sh {
     import common-settings
-    import log qwq
     import cf-tls
 
     root * /srv/qwq.sh
+
+    encode gzip zstd
+
+    # Security headers
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "interest-cohort=()"
+    }
+
+    # Cache static assets
+    @static path *.css *.js *.png *.gif *.ico *.woff2
+    header @static Cache-Control "public, max-age=2592000"
+
+    # Main site
+    handle / {
+        rewrite * /index.html
+        file_server
+    }
+
+    # Clean URLs for all pages
+    handle /dmca {
+        rewrite * /dmca.html
+        file_server
+    }
+
+    handle /contact {
+        rewrite * /contact.html
+        file_server
+    }
+
+    handle /tos {
+        rewrite * /tos.html
+        file_server
+    }
+
+    handle /pp {
+        rewrite * /pp.html
+        file_server
+    }
 
     # Shell scripts
     handle /*.sh {
@@ -11,6 +51,7 @@ qwq.sh {
         file_server
     }
 
+    # Static assets
     handle {
         file_server
     }
@@ -23,4 +64,6 @@ qwq.sh {
             file_server
         }
     }
+
+    import log qwq-qwq
 }
