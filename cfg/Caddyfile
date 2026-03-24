@@ -45,6 +45,11 @@ qwq.sh {
         file_server
     }
 
+    handle /dash {
+        rewrite * /dash.html
+        file_server
+    }
+
     # Shell scripts
     handle /*.sh {
         rewrite * /sh{uri}
